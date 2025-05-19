@@ -30,7 +30,7 @@ const Contact = () => {
   const { ref } = useIntersectionObserver();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -41,7 +41,7 @@ const Contact = () => {
       message: "",
     },
   });
-  
+
   const submitMutation = useMutation({
     mutationFn: async (data: ContactFormValues) => {
       return await apiRequest("/api/contact", {
@@ -69,7 +69,7 @@ const Contact = () => {
       setIsSubmitting(false);
     },
   });
-  
+
   const onSubmit = (data: ContactFormValues) => {
     setIsSubmitting(true);
     submitMutation.mutate(data);
@@ -82,7 +82,7 @@ const Contact = () => {
         <meta name="description" content="Get in touch with Dzyner Thoughts for all your interior design needs. We're ready to transform your space with our expert design solutions." />
       </Helmet>
 
-      <section 
+      <section
         className="py-16 mt-8 page-section"
         ref={ref}
       >
@@ -105,23 +105,24 @@ const Contact = () => {
                 <div className="bg-royal-light p-2 rounded-full text-white mr-3">
                   <i className="bi bi-geo-alt text-lg"></i>
                 </div>
-                <p className="mb-0 font-raleway">123 Design Street, Creative City, 10001</p>
+                <p className="mb-0 font-raleway">St John's, 66/4, Church road, Sulthangunta, Shivaji Nagar, Bengaluru, Karnataka 560051
+                </p>
               </div>
-              
+
               <div className="flex items-center mb-5">
                 <div className="bg-royal-light p-2 rounded-full text-white mr-3">
                   <i className="bi bi-envelope text-lg"></i>
                 </div>
-                <p className="mb-0 font-raleway">info@dzynerthoughts.com</p>
+                <p className="mb-0 font-raleway">dzynerthoughts@gmail.com</p>
               </div>
-              
+
               <div className="flex items-center mb-8">
                 <div className="bg-royal-light p-2 rounded-full text-white mr-3">
                   <i className="bi bi-telephone text-lg"></i>
                 </div>
-                <p className="mb-0 font-raleway">+1 (555) 123-4567</p>
+                <p className="mb-0 font-raleway">+91 95387 73007</p>
               </div>
-              
+
               <div className="mt-10">
                 <h6 className="font-montserrat mb-3">Follow Us</h6>
                 <div className="flex gap-3">
@@ -143,19 +144,19 @@ const Contact = () => {
               <div className="mt-10">
                 <h4 className="font-playfair text-2xl mb-4">Our Office</h4>
                 <div className="rounded-lg overflow-hidden shadow-lg">
-                  <img 
-                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400" 
-                    alt="Dzyner Thoughts Office" 
+                  <img
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400"
+                    alt="Dzyner Thoughts Office"
                     className="w-full"
                   />
                 </div>
               </div>
             </div>
-            
+
             <div className="lg:col-span-7">
               <div className="bg-white p-6 lg:p-8 rounded-lg shadow-sm">
                 <h4 className="font-playfair text-2xl mb-6">Send Us a Message</h4>
-                
+
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -172,7 +173,7 @@ const Contact = () => {
                           </FormItem>
                         )}
                       />
-                      
+
                       <FormField
                         control={form.control}
                         name="email"
@@ -186,7 +187,7 @@ const Contact = () => {
                           </FormItem>
                         )}
                       />
-                      
+
                       <FormField
                         control={form.control}
                         name="phone"
@@ -200,15 +201,15 @@ const Contact = () => {
                           </FormItem>
                         )}
                       />
-                      
+
                       <FormField
                         control={form.control}
                         name="service"
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>Service Interested In</FormLabel>
-                            <Select 
-                              onValueChange={field.onChange} 
+                            <Select
+                              onValueChange={field.onChange}
                               defaultValue={field.value}
                             >
                               <FormControl>
@@ -231,7 +232,7 @@ const Contact = () => {
                         )}
                       />
                     </div>
-                    
+
                     <FormField
                       control={form.control}
                       name="message"
@@ -239,19 +240,19 @@ const Contact = () => {
                         <FormItem>
                           <FormLabel>Your Message</FormLabel>
                           <FormControl>
-                            <Textarea 
-                              placeholder="Tell us about your project..." 
-                              className="min-h-[150px]" 
-                              {...field} 
+                            <Textarea
+                              placeholder="Tell us about your project..."
+                              className="min-h-[150px]"
+                              {...field}
                             />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
-                    
-                    <Button 
-                      type="submit" 
+
+                    <Button
+                      type="submit"
                       className="w-full py-3 bg-[hsl(var(--royal-DEFAULT))] hover:bg-[hsl(var(--royal-dark))] text-white rounded-full transition-all"
                       disabled={isSubmitting}
                     >
