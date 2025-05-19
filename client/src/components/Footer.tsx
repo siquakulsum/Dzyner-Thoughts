@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#ffd700] via-transparent to-[#ffd700]"></div>
       <div className="absolute -left-20 -top-20 w-40 h-40 rounded-full bg-[#8F45CF] opacity-5"></div>
       <div className="absolute right-10 bottom-10 w-60 h-60 rounded-full bg-[#ffd700] opacity-5"></div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         {/* Top section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
@@ -22,43 +22,56 @@ const Footer = () => {
                 <span className="text-xs text-[#ffd700]/80 font-josefin tracking-widest uppercase -mt-1">Interior Excellence</span>
               </div>
             </div>
-            
+
             <p className="font-josefin text-white mb-6 leading-relaxed">
               We transform ordinary spaces into extraordinary experiences through thoughtful design, meticulous attention to detail, and a passion for creating interiors that inspire, comfort, and delight.
             </p>
-            
-            <div className="flex space-x-4 mb-6">
-              <a 
-                href="#" 
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#ffd700] hover:border-[#ffd700] hover:text-[#2a1048] transition-all"
-                aria-label="Instagram"
-              >
-                <i className="bi bi-instagram"></i>
-              </a>
-              <a 
-                href="#" 
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#ffd700] hover:border-[#ffd700] hover:text-[#2a1048] transition-all"
-                aria-label="Facebook"
-              >
-                <i className="bi bi-facebook"></i>
-              </a>
-              <a 
-                href="#" 
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#ffd700] hover:border-[#ffd700] hover:text-[#2a1048] transition-all"
-                aria-label="Pinterest"
-              >
-                <i className="bi bi-pinterest"></i>
-              </a>
-              <a 
-                href="#" 
-                className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#ffd700] hover:border-[#ffd700] hover:text-[#2a1048] transition-all"
-                aria-label="LinkedIn"
-              >
-                <i className="bi bi-linkedin"></i>
-              </a>
+
+            <div className="mt-10">
+              <h6 className="font-montserrat mb-3">Follow Us</h6>
+              <div className="flex gap-3">
+                <a
+                  href="https://www.instagram.com/dzynerthoughts?igsh=MXRmYTFiazU5bzU5bg=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT text-white rounded-full hover:bg-royal-dark transition-colors"
+                >
+                  <i className="bi bi-instagram"></i>
+                </a>
+                <a
+                  href="https://www.facebook.com/people/dzynerthoughts/100066869300327/?rdid=stBn6XVqnaLM172j&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1ALupJxnNx%2F"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT text-white rounded-full hover:bg-royal-dark transition-colors"
+                >
+                  <i className="bi bi-facebook"></i>
+                </a>
+                <a
+                  href="https://pin.it/6a8PXXVLD"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT text-white rounded-full hover:bg-royal-dark transition-colors"
+                >
+                  <i className="bi bi-pinterest"></i>
+                </a>
+                <a
+                  href="https://www.threads.net/@dzynerthoughts"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT rounded-full hover:bg-royal-dark transition-colors"
+                >
+                  <img
+                    src="https://img.icons8.com/ios-filled/50/ffffff/threads.png"
+                    alt="Threads Icon"
+                    className="w-5 h-5"
+                  />
+                </a>
+              </div>
             </div>
+
+
           </div>
-          
+
           {/* Quick Links column */}
           <div className="">
             <h6 className="font-cinzel text-lg mb-5 text-white relative inline-block pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-[#ffd700]">
@@ -97,7 +110,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          
+
           {/* Services column */}
           <div className="">
             <h6 className="font-cinzel text-lg mb-5 text-white relative inline-block pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-[#ffd700]">
@@ -136,7 +149,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          
+
           {/* Newsletter column */}
           <div className="">
             <h6 className="font-cinzel text-lg mb-5 text-white relative inline-block pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-8 after:h-0.5 after:bg-[#ffd700]">
@@ -147,9 +160,9 @@ const Footer = () => {
             </p>
             <div className="flex flex-col space-y-4">
               <div className="relative">
-                <input 
-                  type="email" 
-                  placeholder="Your Email Address" 
+                <input
+                  type="email"
+                  placeholder="Your Email Address"
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-md focus:outline-none focus:border-[#ffd700]/70 text-white placeholder:text-gray-400 font-josefin pr-28"
                 />
                 <button className="absolute right-2 top-1/2 transform -translate-y-1/2 px-3 py-1.5 bg-[#ffd700] text-[#2a1048] rounded-md font-cinzel text-xs uppercase tracking-wider hover:shadow-lg transition-all font-medium">
@@ -162,7 +175,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Divider with decorative element */}
         <div className="relative flex items-center py-2 mb-6">
           <div className="flex-grow h-px bg-white/10"></div>
@@ -171,7 +184,7 @@ const Footer = () => {
           </div>
           <div className="flex-grow h-px bg-white/10"></div>
         </div>
-        
+
         {/* Bottom section */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-2">
           <p className="text-white/80 text-sm mb-4 md:mb-0 font-josefin">

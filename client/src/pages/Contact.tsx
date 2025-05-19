@@ -126,20 +126,46 @@ const Contact = () => {
               <div className="mt-10">
                 <h6 className="font-montserrat mb-3">Follow Us</h6>
                 <div className="flex gap-3">
-                  <a href="#" className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT text-white rounded-full hover:bg-royal-dark transition-colors">
+                  <a
+                    href="https://www.instagram.com/dzynerthoughts?igsh=MXRmYTFiazU5bzU5bg=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT text-white rounded-full hover:bg-royal-dark transition-colors"
+                  >
                     <i className="bi bi-instagram"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT text-white rounded-full hover:bg-royal-dark transition-colors">
+                  <a
+                    href="https://www.facebook.com/people/dzynerthoughts/100066869300327/?rdid=stBn6XVqnaLM172j&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1ALupJxnNx%2F"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT text-white rounded-full hover:bg-royal-dark transition-colors"
+                  >
                     <i className="bi bi-facebook"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT text-white rounded-full hover:bg-royal-dark transition-colors">
+                  <a
+                    href="https://pin.it/6a8PXXVLD"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT text-white rounded-full hover:bg-royal-dark transition-colors"
+                  >
                     <i className="bi bi-pinterest"></i>
                   </a>
-                  <a href="#" className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT text-white rounded-full hover:bg-royal-dark transition-colors">
-                    <i className="bi bi-linkedin"></i>
+                  <a
+                    href="https://www.threads.net/@dzynerthoughts"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 flex items-center justify-center bg-royal-DEFAULT rounded-full hover:bg-royal-dark transition-colors"
+                  >
+                    <img
+                      src="https://img.icons8.com/ios-filled/50/ffffff/threads.png"
+                      alt="Threads Icon"
+                      className="w-5 h-5"
+                    />
                   </a>
                 </div>
               </div>
+
+
 
               <div className="mt-10">
                 <h4 className="font-playfair text-2xl mb-4">Our Office</h4>
