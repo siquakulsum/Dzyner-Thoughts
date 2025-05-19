@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import logo from "@/Assets/logo-1.png";
 
 const Footer = () => {
   return (
@@ -14,9 +15,7 @@ const Footer = () => {
           {/* Brand / About column */}
           <div className="">
             <div className="flex items-center mb-5">
-              <div className="mr-3 flex items-center justify-center w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full border border-[#ffd700]/30">
-                <span className="text-[#ffd700] font-cinzel text-xl">D</span>
-              </div>
+                <img src={logo} alt="Dzyner Thoughts Logo" className="mr-2 h-10 sm:h-12 md:h-16 w-auto object-contain transition-all duration-300"/>
               <div className="flex flex-col">
                 <span className="text-white font-cinzel text-xl font-bold tracking-wide">Dzyner Thoughts</span>
                 <span className="text-xs text-[#ffd700]/80 font-josefin tracking-widest uppercase -mt-1">Interior Excellence</span>
