@@ -2,16 +2,185 @@ import { useState } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Project } from "@shared/schema";
 import { useQuery } from "@tanstack/react-query";
-import ProjectModal from "@/components/ProjectModal";
 import { Helmet } from "react-helmet";
+import { X, ChevronLeft, ChevronRight, Info } from "lucide-react";
+
+// Updated Project Modal Component
+const ProjectModal = ({ project, isOpen, onClose }) => {
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [showDetails, setShowDetails] = useState(false);
+
+  // Early return if no project is provided
+  if (!project) return null;
+
+  // Simulate multiple images from the single image provided
+  const images = project.images || [
+    project.image,
+    project.image, // In a real app, these would be different images
+    project.image
+  ];
+
+  const nextImage = () => {
+    setActiveImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setActiveImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
+  };
+
+  // If modal is not open, don't render anything
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
+      {/* Overlay with blur effect */}
+      <div 
+        className="absolute inset-0 bg-black/60 backdrop-blur-sm" 
+        onClick={onClose}
+      />
+      
+      {/* Modal Container */}
+      <div 
+        className="relative w-full max-w-5xl max-h-[90vh] bg-white rounded-lg shadow-2xl overflow-hidden flex flex-col md:flex-row mx-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close button */}
+        <button 
+          onClick={onClose} 
+          className="absolute top-4 right-4 z-10 bg-white/80 hover:bg-white rounded-full p-1.5 shadow-md transition-all"
+          aria-label="Close modal"
+        >
+          <X size={20} className="text-gray-800" />
+        </button>
+
+        {/* Image Gallery - Takes full height on mobile, 100% width on mobile and 60% on desktop */}
+        <div className="relative w-full md:w-3/5 h-64 md:h-auto">
+          <img 
+            src={images[activeImageIndex]} 
+            alt={project.title}
+            className="w-full h-full object-cover"
+          />
+
+          {/* Image navigation controls */}
+          {images.length > 1 && (
+            <>
+              <button 
+                onClick={prevImage}
+                className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-md transition-all"
+                aria-label="Previous image"
+              >
+                <ChevronLeft size={20} className="text-gray-800" />
+              </button>
+              <button 
+                onClick={nextImage}
+                className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-md transition-all"
+                aria-label="Next image"
+              >
+                <ChevronRight size={20} className="text-gray-800" />
+              </button>
+              
+              {/* Image counter */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
+                {activeImageIndex + 1} / {images.length}
+              </div>
+            </>
+          )}
+          
+          {/* Mobile details toggle button */}
+          <button 
+            onClick={toggleDetails}
+            className="md:hidden absolute bottom-4 right-4 bg-[#3c1867] text-white rounded-full p-2 shadow-md"
+            aria-label="Toggle details"
+          >
+            <Info size={20} />
+          </button>
+        </div>
+        
+        {/* Project Details - Full width on mobile (conditionally shown), 40% on desktop */}
+        <div className={`
+          w-full md:w-2/5 bg-white p-6 overflow-y-auto max-h-[60vh] md:max-h-none
+          ${showDetails ? 'block' : 'hidden md:block'}
+        `}>
+          {/* Mobile back button */}
+          {showDetails && (
+            <button 
+              onClick={toggleDetails}
+              className="md:hidden mb-4 inline-flex items-center text-[#3c1867]"
+            >
+              <ChevronLeft size={16} />
+              <span>Back to image</span>
+            </button>
+          )}
+          
+          {/* Project title */}
+          <h3 className="font-cinzel text-2xl mb-4 text-[#3c1867]">{project.title}</h3>
+          
+          {/* Categories */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {project.categories.split(',').map((category, index) => (
+              <span 
+                key={index} 
+                className="bg-[#3c1867]/10 text-[#3c1867] text-xs px-3 py-1 rounded-full font-josefin"
+              >
+                {category.trim()}
+              </span>
+            ))}
+          </div>
+          
+          {/* Project description */}
+          <div className="mb-6">
+            <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-2 font-cinzel">Description</h4>
+            <p className="text-gray-700 font-josefin">{project.description}</p>
+          </div>
+          
+          {/* Project details */}
+          <div className="space-y-4">
+            {project.location && (
+              <div>
+                <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-1 font-cinzel">Location</h4>
+                <p className="text-gray-700 font-josefin">{project.location}</p>
+              </div>
+            )}
+            
+            {project.area && (
+              <div>
+                <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-1 font-cinzel">Area</h4>
+                <p className="text-gray-700 font-josefin">{project.area} sq.ft.</p>
+              </div>
+            )}
+            
+            {project.year && (
+              <div>
+                <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-1 font-cinzel">Year</h4>
+                <p className="text-gray-700 font-josefin">{project.year}</p>
+              </div>
+            )}
+          </div>
+          
+          {/* Back button at bottom */}
+          <button 
+            onClick={onClose}
+            className="mt-8 w-full py-3 bg-gray-100 hover:bg-gray-200 transition-colors text-gray-800 rounded-md font-cinzel"
+          >
+            Close Details
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const Projects = () => {
   const { ref } = useIntersectionObserver();
   const [activeFilter, setActiveFilter] = useState("all");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data: projects, isLoading } = useQuery<Project[]>({
+  const { data: projects, isLoading } = useQuery({
     queryKey: ['/api/projects'],
   });
 
@@ -27,7 +196,7 @@ const Projects = () => {
     ? projects
     : projects?.filter(project => project.categories.includes(activeFilter));
 
-  const openModal = (project: Project) => {
+  const openModal = (project) => {
     setSelectedProject(project);
     setIsModalOpen(true);
   };
