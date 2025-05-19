@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: dzyner-thoughts
+    env: node
+    plan: free
+    buildCommand: ./build.sh
+    startCommand: ./start-prod.sh
+    envVars:
+      - key: NODE_ENV
+        value: production
+    healthCheckPath: /api/services
+    autoDeploy: true
