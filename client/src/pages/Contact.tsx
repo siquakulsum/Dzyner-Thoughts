@@ -105,7 +105,7 @@ const Contact = () => {
                 <div className="bg-royal-light p-2 rounded-full text-white mr-3">
                   <i className="bi bi-geo-alt text-lg"></i>
                 </div>
-                <p className="mb-0 font-raleway">St John's, 66/4, Church road, Sulthangunta, Shivaji Nagar, Bengaluru, Karnataka 560051
+                <p className="mb-0 font-raleway">66/4 St John's Church road Shivaji Nagar, Bengaluru, Karnataka 560051
                 </p>
               </div>
 
